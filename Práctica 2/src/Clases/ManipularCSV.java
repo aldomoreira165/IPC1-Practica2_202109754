@@ -11,9 +11,10 @@ public class ManipularCSV {
     public BufferedReader lector;
     public String linea;
     public String partesTexto[];
+    public String tituloEjeX;
+    public String tituloEjeY;
     public static String saltosTexto[];
     public int contador = -1;
-    public int numDatos;
     public String[] xvalues = new String[50];
     public Integer[] yvalues = new Integer[50];
     public int contadorX = -1;
@@ -30,6 +31,9 @@ public class ManipularCSV {
                 for (int i = 0; i < partesTexto.length; i++) {
                     if (i == 1) {
                         contadorY += 1;
+                        if (contadorY == 0) {
+                            tituloEjeY = partesTexto[1];
+                        }
                         if (contadorY > 0) {
                             contadorY2 += 1;
                             yvalues[contadorY2] = Integer.parseInt(partesTexto[i]);
@@ -37,6 +41,9 @@ public class ManipularCSV {
                     }
                     if (i == 0) {
                         contadorX += 1;
+                        if (contadorX == 0) {
+                            tituloEjeX = partesTexto[0];
+                        }
                         if (contadorX > 0) {
                             contadorX2 += 1;
                             xvalues[contadorX2] = partesTexto[i];
