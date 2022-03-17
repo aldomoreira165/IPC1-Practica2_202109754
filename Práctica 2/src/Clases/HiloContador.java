@@ -1,21 +1,9 @@
 package Clases;
 
-import Clases.ManipularCSV;
 import JFrames.pantallaPrincipal;
-import javax.swing.JRadioButton;
 
-public class Hilo extends Thread {
+public class HiloContador extends Thread {
 
-    public int cantidadMovimientosGrafica = 0;
-
-    private void esperarXsegundos(int segundos) {
-        try {
-            Thread.sleep(segundos * 1000);
-        } catch (Exception e) {
-            Thread.currentThread().interrupt();
-        }
-    }
-    
     public void quickSortAscendente(Integer datos[], String datosX[], int a, int b) {
         int pivote = datos[a];
         String pivoteX = datosX[a];
@@ -50,7 +38,7 @@ public class Hilo extends Thread {
             quickSortAscendente(datos, datosX, j + 1, b);
         }
     }
-    
+
     public void quickSortDescendente(Integer datos[], String datosX[], int a, int b) {
         int pivote = datos[a];
         String pivoteX = datosX[a];
@@ -85,10 +73,11 @@ public class Hilo extends Thread {
             quickSortDescendente(datos, datosX, j + 1, b);
         }
     }
-    
+
     @Override
     public void run() {
         if (pantallaPrincipal.getInstancia().rbutton_ascendente.isSelected() == true & pantallaPrincipal.getInstancia().rbutton_algoritmo.isSelected() == true) {
+            int contadorCambios = 0;
             for (int i = 1; i < ManipularCSV.getInstancia().contador; i++) {
                 for (int j = 0; j < ManipularCSV.getInstancia().contador - 1; j++) {
                     if (ManipularCSV.getInstancia().yvalues[j] > ManipularCSV.getInstancia().yvalues[j + 1]) {
@@ -98,16 +87,16 @@ public class Hilo extends Thread {
                         ManipularCSV.getInstancia().xvalues[j] = ManipularCSV.getInstancia().xvalues[j + 1];
                         ManipularCSV.getInstancia().yvalues[j + 1] = temporal;
                         ManipularCSV.getInstancia().xvalues[j + 1] = temporalX;
+                        contadorCambios += 1;
                     }
                 }
-                this.esperarXsegundos(3);
             }
             for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
                 System.out.println(ManipularCSV.getInstancia().yvalues[i] + " - " + ManipularCSV.getInstancia().xvalues[i]);
-                this.esperarXsegundos(3);
             }
         }
         if (pantallaPrincipal.getInstancia().rbutton_descendente.isSelected() == true & pantallaPrincipal.getInstancia().rbutton_algoritmo.isSelected() == true) {
+            int contadorCambios = 0;
             for (int i = 1; i < ManipularCSV.getInstancia().contador; i++) {
                 for (int j = 0; j < ManipularCSV.getInstancia().contador - 1; j++) {
                     if (ManipularCSV.getInstancia().yvalues[j] < ManipularCSV.getInstancia().yvalues[j + 1]) {
@@ -117,21 +106,19 @@ public class Hilo extends Thread {
                         ManipularCSV.getInstancia().xvalues[j] = ManipularCSV.getInstancia().xvalues[j + 1];
                         ManipularCSV.getInstancia().yvalues[j + 1] = temporal;
                         ManipularCSV.getInstancia().xvalues[j + 1] = temporalX;
-                        this.esperarXsegundos(3);
+                        contadorCambios += 1;
                     }
                 }
             }
             for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
                 System.out.println(ManipularCSV.getInstancia().yvalues[i] + " - " + ManipularCSV.getInstancia().xvalues[i]);
-                this.esperarXsegundos(3);
             }
         }
-        
+
         if (pantallaPrincipal.getInstancia().rbutton_algoritmo2.isSelected() == true && pantallaPrincipal.getInstancia().rbutton_ascendente.isSelected() == true) {
             quickSortAscendente(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, 0, ManipularCSV.getInstancia().contador - 1);
             for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
                 System.out.println(ManipularCSV.getInstancia().yvalues[i] + " - " + ManipularCSV.getInstancia().xvalues[i]);
-                this.esperarXsegundos(3);
             }
         }
 
@@ -139,7 +126,6 @@ public class Hilo extends Thread {
             quickSortDescendente(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, 0, ManipularCSV.getInstancia().contador - 1);
             for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
                 System.out.println(ManipularCSV.getInstancia().yvalues[i] + " - " + ManipularCSV.getInstancia().xvalues[i]);
-                this.esperarXsegundos(3);
             }
         }
     }

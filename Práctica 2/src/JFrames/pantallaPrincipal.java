@@ -1,6 +1,8 @@
 package JFrames;
 
 import Clases.ManipularCSV;
+import Clases.Hilo;
+import Clases.HiloGrafica;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.JFileChooser;
@@ -15,104 +17,27 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 public class pantallaPrincipal extends javax.swing.JFrame {
 
-ManipularCSV manipularCSV = new ManipularCSV();
+    Hilo hilo = new Hilo();
+    HiloGrafica hiloGrafica = new HiloGrafica();
+
+    private static pantallaPrincipal instancia;
 
     public pantallaPrincipal() {
         initComponents();
         setLocationRelativeTo(null);
     }
 
+    public static pantallaPrincipal getInstancia() {
+        if (instancia == null) {
+            instancia = new pantallaPrincipal();
+        }
+        return instancia;
+    }
+
     public String obtenerRuta() {
         String rutaArchivo;
         rutaArchivo = txt_examinar.getText();
         return rutaArchivo;
-    }
-
-    public void quickSortAscendente(Integer datos[], String datosX[], int a, int b) {
-        int pivote = datos[a];
-        String pivoteX = datosX[a];
-        int i = a;
-        int j = b;
-        int aux;
-        String auxX;
-        while (i < j) {
-            while (datos[i] <= pivote && i < j) {
-                i++;
-            }
-            while (datos[j] > pivote)
-                j--;
-                if (i < j) {
-                        aux = datos[i];
-                        auxX = datosX[i];
-                        datos[i] = datos[j];
-                        datosX[i] = datosX[j];
-                        datos[j] = aux;
-                        datosX[j] = auxX;
-                    }            
-        }
-        datos[a] = datos[j];
-        datosX[a] = datosX[j];
-        datos[j] = pivote;
-        datosX[j] = pivoteX;
-        if (a < j - 1) 
-            quickSortAscendente(datos, datosX, a, j - 1);
-        if (j + 1 < b) 
-            quickSortAscendente(datos, datosX, j + 1, b);
-    }
-
-    public void quickSortDescendente(Integer datos[], String datosX[], int a, int b) {
-        int pivote = datos[a];
-        String pivoteX = datosX[a];
-        int i = a;
-        int j = b;
-        int aux;
-        String auxX;
-        while (i < j) {
-            while (datos[i] >= pivote && i < j) i++;
-                while (datos[j] < pivote) j--;
-                if (i < j) {
-                        aux = datos[i];
-                        auxX = datosX[i];
-                        datos[i] = datos[j];
-                        datosX[i] = datosX[j];
-                        datos[j] = aux;
-                        datosX[j] = auxX;
-                    }            
-        }
-        datos[a] = datos[j];
-        datosX[a] = datosX[j];
-        datos[j] = pivote;
-        datosX[j] = pivoteX;
-        if (a < j - 1) 
-            quickSortDescendente(datos, datosX, a, j - 1);
-        if (j + 1 < b) 
-            quickSortDescendente(datos, datosX, j + 1, b);
-    }
-
-    public void graficar(Integer arreglo[], String arregloDos[], int limite, String ejeX, String ejeY, String tituloGrafico) {
-        DefaultCategoryDataset datos = new DefaultCategoryDataset();
-
-        for (int i = 0; i < limite; i++) {
-            datos.setValue(arreglo[i], arregloDos[i], ejeX);
-        }
-
-        JFreeChart grafico = ChartFactory.createBarChart(
-                tituloGrafico,
-                ejeX,
-                ejeY,
-                datos,
-                PlotOrientation.VERTICAL,
-                true,
-                true,
-                false
-        );
-        ChartPanel panel = new ChartPanel(grafico);
-        panel.setMouseWheelEnabled(true);
-        panel.setPreferredSize(new Dimension(panel1.getWidth(), panel1.getHeight()));
-        panel1.setLayout(new BorderLayout());
-        panel1.add(panel, BorderLayout.NORTH);
-        pack();
-        repaint();
     }
 
     @SuppressWarnings("unchecked")
@@ -290,12 +215,12 @@ ManipularCSV manipularCSV = new ManipularCSV();
         int seleccionar = seleccionarArchivo.showOpenDialog(this);
         if (seleccionar == JFileChooser.APPROVE_OPTION) {
             File archivo = seleccionarArchivo.getSelectedFile();
-            manipularCSV.leerCSVFile(archivo);
+            ManipularCSV.getInstancia().leerCSVFile(archivo);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void rbutton_algoritmo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbutton_algoritmo2ActionPerformed
@@ -304,58 +229,11 @@ ManipularCSV manipularCSV = new ManipularCSV();
     }//GEN-LAST:event_rbutton_algoritmo2ActionPerformed
 
     private void btn_ordenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ordenarActionPerformed
-        if (manipularCSV.xvalues[0] == null & manipularCSV.yvalues[0] == null) {
-            manipularCSV.leerCSVString(obtenerRuta());
+        if (ManipularCSV.getInstancia().xvalues[0] == null & ManipularCSV.getInstancia().yvalues[0] == null) {
+            ManipularCSV.getInstancia().leerCSVString(pantallaPrincipal.getInstancia().obtenerRuta());
         }
-        if (rbutton_ascendente.isSelected() == true & rbutton_algoritmo.isSelected() == true) {
-            for (int i = 1; i < manipularCSV.contador; i++) {
-                for (int j = 0; j < manipularCSV.contador-1; j++) {
-                    if (manipularCSV.yvalues[j] > manipularCSV.yvalues[j + 1]) {
-                        int temporal = manipularCSV.yvalues[j];
-                        String temporalX = manipularCSV.xvalues[j];
-                        manipularCSV.yvalues[j] = manipularCSV.yvalues[j + 1];
-                        manipularCSV.xvalues[j] = manipularCSV.xvalues[j+1];
-                        manipularCSV.yvalues[j + 1] = temporal;
-                        manipularCSV.xvalues[j + 1] = temporalX;
-                    }
-                }
-            }
-            for (int i = 0; i < manipularCSV.contador; i++) {
-                System.out.println(manipularCSV.yvalues[i]+" - "+manipularCSV.xvalues[i]);
-            }
-        }
-        if (rbutton_descendente.isSelected() == true & rbutton_algoritmo.isSelected() == true) {
-            for (int i = 1; i < manipularCSV.contador; i++) {
-                for (int j = 0; j < manipularCSV.contador-1; j++) {
-                    if (manipularCSV.yvalues[j] < manipularCSV.yvalues[j + 1]) {
-                       int temporal = manipularCSV.yvalues[j];
-                        String temporalX = manipularCSV.xvalues[j];
-                        manipularCSV.yvalues[j] = manipularCSV.yvalues[j + 1];
-                        manipularCSV.xvalues[j] = manipularCSV.xvalues[j+1];
-                        manipularCSV.yvalues[j + 1] = temporal;
-                        manipularCSV.xvalues[j + 1] = temporalX;
-                    }
-                }
-            }
-            for (int i = 0; i < manipularCSV.contador; i++) {
-                System.out.println(manipularCSV.yvalues[i]+" - "+manipularCSV.xvalues[i]);
-            }
-        }
-
-        if (rbutton_algoritmo2.isSelected() == true && rbutton_ascendente.isSelected() == true) {
-            quickSortAscendente(manipularCSV.yvalues, manipularCSV.xvalues, 0, manipularCSV.contador-1);
-            for (int i = 0; i < manipularCSV.contador; i++) {
-                System.out.println(manipularCSV.yvalues[i]+" - "+manipularCSV.xvalues[i]);
-            }
-        }
-
-        if (rbutton_algoritmo2.isSelected() == true && rbutton_descendente.isSelected() == true) {
-            quickSortDescendente(manipularCSV.yvalues, manipularCSV.xvalues, 0, manipularCSV.contador - 1);
-            for (int i = 0; i < manipularCSV.contador; i++) {
-                System.out.println(manipularCSV.yvalues[i] + " - " + manipularCSV.xvalues[i]);
-            }
-        }
-        graficar(manipularCSV.yvalues, manipularCSV.xvalues, manipularCSV.contador, manipularCSV.tituloEjeX, manipularCSV.tituloEjeY, txt_generar.getText());
+        hilo.start();
+        hiloGrafica.start();
         txt_examinar.setText("");
     }//GEN-LAST:event_btn_ordenarActionPerformed
 
@@ -376,7 +254,7 @@ ManipularCSV manipularCSV = new ManipularCSV();
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new pantallaPrincipal().setVisible(true);
+                pantallaPrincipal.getInstancia().setVisible(true);
             }
         });
     }
@@ -386,12 +264,12 @@ ManipularCSV manipularCSV = new ManipularCSV();
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
-    private java.awt.Panel panel1;
-    private javax.swing.JRadioButton rbutton_algoritmo;
-    private javax.swing.JRadioButton rbutton_algoritmo2;
-    private javax.swing.JRadioButton rbutton_ascendente;
-    private javax.swing.JRadioButton rbutton_descendente;
+    public java.awt.Panel panel1;
+    public javax.swing.JRadioButton rbutton_algoritmo;
+    public javax.swing.JRadioButton rbutton_algoritmo2;
+    public javax.swing.JRadioButton rbutton_ascendente;
+    public javax.swing.JRadioButton rbutton_descendente;
     private java.awt.TextField txt_examinar;
-    private java.awt.TextField txt_generar;
+    public java.awt.TextField txt_generar;
     // End of variables declaration//GEN-END:variables
 }
