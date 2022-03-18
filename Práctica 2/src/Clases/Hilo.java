@@ -1,10 +1,13 @@
 package Clases;
 
 import Clases.ManipularCSV;
+import Clases.HiloGrafica;
 import JFrames.pantallaPrincipal;
 import javax.swing.JRadioButton;
 
 public class Hilo extends Thread {
+
+HiloGrafica hiloGrafica = new HiloGrafica();
 
     public int cantidadMovimientosGrafica = 0;
 
@@ -117,7 +120,7 @@ public class Hilo extends Thread {
                         ManipularCSV.getInstancia().xvalues[j] = ManipularCSV.getInstancia().xvalues[j + 1];
                         ManipularCSV.getInstancia().yvalues[j + 1] = temporal;
                         ManipularCSV.getInstancia().xvalues[j + 1] = temporalX;
-                        this.esperarXsegundos(3);
+
                     }
                 }
             }

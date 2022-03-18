@@ -4,11 +4,13 @@ import Clases.ManipularCSV;
 import Clases.Hilo;
 import Clases.HiloGrafica;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.FileReader;
+import javax.swing.BorderFactory;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -58,34 +60,59 @@ public class pantallaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        txt_generar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         txt_generar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_generarActionPerformed(evt);
             }
         });
 
+        txt_examinar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txt_examinar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txt_examinarMouseEntered(evt);
+            }
+        });
         txt_examinar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_examinarActionPerformed(evt);
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(51, 51, 255));
+        jButton1.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Examinar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(51, 51, 255));
+        jButton2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Generar gráfica");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton2MouseEntered(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
+        rbutton_ascendente.setBackground(new java.awt.Color(51, 51, 255));
+        rbutton_ascendente.setForeground(new java.awt.Color(255, 255, 255));
         rbutton_ascendente.setText("Ascendente");
         rbutton_ascendente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +120,8 @@ public class pantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        rbutton_descendente.setBackground(new java.awt.Color(51, 51, 255));
+        rbutton_descendente.setForeground(new java.awt.Color(255, 255, 255));
         rbutton_descendente.setText("Descendente");
         rbutton_descendente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +129,8 @@ public class pantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        rbutton_algoritmo.setBackground(new java.awt.Color(51, 51, 255));
+        rbutton_algoritmo.setForeground(new java.awt.Color(255, 255, 255));
         rbutton_algoritmo.setText("Bubblesort");
         rbutton_algoritmo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +138,8 @@ public class pantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        rbutton_algoritmo2.setBackground(new java.awt.Color(51, 51, 255));
+        rbutton_algoritmo2.setForeground(new java.awt.Color(255, 255, 255));
         rbutton_algoritmo2.setText("Quicksort");
         rbutton_algoritmo2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,12 +147,21 @@ public class pantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btn_ordenar.setBackground(new java.awt.Color(51, 51, 255));
+        btn_ordenar.setForeground(new java.awt.Color(255, 255, 255));
         btn_ordenar.setText("Ordenar");
+        btn_ordenar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_ordenarMouseEntered(evt);
+            }
+        });
         btn_ordenar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_ordenarActionPerformed(evt);
             }
         });
+
+        panel1.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
@@ -249,6 +291,37 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         rbutton_algoritmo2.setSelected(false);
         rbutton_algoritmo.setSelected(true);
     }//GEN-LAST:event_rbutton_algoritmoActionPerformed
+
+    private void txt_examinarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_examinarMouseEntered
+ 
+    }//GEN-LAST:event_txt_examinarMouseEntered
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        jButton1.setBackground(Color.WHITE);
+        jButton1.setForeground(Color.BLUE);
+        jButton2.setBackground(Color.BLUE);
+        jButton2.setForeground(Color.WHITE);
+        btn_ordenar.setBackground(Color.BLUE);
+        btn_ordenar.setForeground(Color.WHITE);
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
+        jButton1.setBackground(Color.BLUE);
+        jButton1.setForeground(Color.WHITE);
+        jButton2.setBackground(Color.WHITE);
+        jButton2.setForeground(Color.BLUE);
+        btn_ordenar.setBackground(Color.BLUE);
+        btn_ordenar.setForeground(Color.WHITE);
+    }//GEN-LAST:event_jButton2MouseEntered
+
+    private void btn_ordenarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ordenarMouseEntered
+        jButton1.setBackground(Color.BLUE);
+        jButton1.setForeground(Color.WHITE);
+        jButton2.setBackground(Color.BLUE);
+        jButton2.setForeground(Color.WHITE);
+        btn_ordenar.setBackground(Color.WHITE);
+        btn_ordenar.setForeground(Color.BLUE);
+    }//GEN-LAST:event_btn_ordenarMouseEntered
 
     public static void main(String args[]) {
 
