@@ -1,6 +1,5 @@
 package Clases;
 
-import Clases.ManipularCSV;
 import JFrames.pantallaPrincipal;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -10,14 +9,15 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-public class HiloGrafica extends Thread {
+public class Grafica {
 
-    private void esperarXsegundos(int segundos) {
-        try {
-            Thread.sleep(segundos * 1000);
-        } catch (Exception e) {
-            Thread.currentThread().interrupt();
+    private static Grafica instancia;
+
+    public static Grafica getInstancia() {
+        if (instancia == null) {
+            instancia = new Grafica();
         }
+        return instancia;
     }
 
     public void graficar(Integer arreglo[], String arregloDos[], int limite, String ejeX, String ejeY, String tituloGrafico) {
@@ -44,13 +44,5 @@ public class HiloGrafica extends Thread {
         pantallaPrincipal.getInstancia().panel1.add(panel, BorderLayout.NORTH);
         pantallaPrincipal.getInstancia().pack();
         pantallaPrincipal.getInstancia().repaint();
-    }
-
-    @Override
-    public void run() {
-        for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
-            graficar(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, ManipularCSV.getInstancia().contador, ManipularCSV.getInstancia().tituloEjeX, ManipularCSV.getInstancia().tituloEjeY, pantallaPrincipal.getInstancia().txt_generar.getText());
-            esperarXsegundos(3);
-        }
     }
 }

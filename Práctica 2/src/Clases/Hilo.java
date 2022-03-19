@@ -1,13 +1,12 @@
 package Clases;
 
 import Clases.ManipularCSV;
-import Clases.HiloGrafica;
+import Clases.Grafica;
+import Clases.Cronometro;
 import JFrames.pantallaPrincipal;
 import javax.swing.JRadioButton;
 
 public class Hilo extends Thread {
-
-HiloGrafica hiloGrafica = new HiloGrafica();
 
     public int cantidadMovimientosGrafica = 0;
 
@@ -40,20 +39,25 @@ HiloGrafica hiloGrafica = new HiloGrafica();
                 datosX[i] = datosX[j];
                 datos[j] = aux;
                 datosX[j] = auxX;
+                esperarXsegundos(1);
+                Grafica.getInstancia().graficar(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, ManipularCSV.getInstancia().contador, ManipularCSV.getInstancia().tituloEjeX, ManipularCSV.getInstancia().tituloEjeY, pantallaPrincipal.getInstancia().txt_generar.getText());
             }
         }
         datos[a] = datos[j];
         datosX[a] = datosX[j];
         datos[j] = pivote;
         datosX[j] = pivoteX;
+        esperarXsegundos(1);
+        Grafica.getInstancia().graficar(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, ManipularCSV.getInstancia().contador, ManipularCSV.getInstancia().tituloEjeX, ManipularCSV.getInstancia().tituloEjeY, pantallaPrincipal.getInstancia().txt_generar.getText());
         if (a < j - 1) {
             quickSortAscendente(datos, datosX, a, j - 1);
         }
         if (j + 1 < b) {
             quickSortAscendente(datos, datosX, j + 1, b);
         }
+        
     }
-    
+
     public void quickSortDescendente(Integer datos[], String datosX[], int a, int b) {
         int pivote = datos[a];
         String pivoteX = datosX[a];
@@ -75,12 +79,16 @@ HiloGrafica hiloGrafica = new HiloGrafica();
                 datosX[i] = datosX[j];
                 datos[j] = aux;
                 datosX[j] = auxX;
+                esperarXsegundos(1);
+                Grafica.getInstancia().graficar(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, ManipularCSV.getInstancia().contador, ManipularCSV.getInstancia().tituloEjeX, ManipularCSV.getInstancia().tituloEjeY, pantallaPrincipal.getInstancia().txt_generar.getText());
             }
         }
         datos[a] = datos[j];
         datosX[a] = datosX[j];
         datos[j] = pivote;
         datosX[j] = pivoteX;
+        esperarXsegundos(1);
+        Grafica.getInstancia().graficar(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, ManipularCSV.getInstancia().contador, ManipularCSV.getInstancia().tituloEjeX, ManipularCSV.getInstancia().tituloEjeY, pantallaPrincipal.getInstancia().txt_generar.getText());
         if (a < j - 1) {
             quickSortDescendente(datos, datosX, a, j - 1);
         }
@@ -101,13 +109,13 @@ HiloGrafica hiloGrafica = new HiloGrafica();
                         ManipularCSV.getInstancia().xvalues[j] = ManipularCSV.getInstancia().xvalues[j + 1];
                         ManipularCSV.getInstancia().yvalues[j + 1] = temporal;
                         ManipularCSV.getInstancia().xvalues[j + 1] = temporalX;
+                        esperarXsegundos(1);
+                        Grafica.getInstancia().graficar(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, ManipularCSV.getInstancia().contador, ManipularCSV.getInstancia().tituloEjeX, ManipularCSV.getInstancia().tituloEjeY, pantallaPrincipal.getInstancia().txt_generar.getText());
                     }
                 }
-                this.esperarXsegundos(3);
             }
             for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
                 System.out.println(ManipularCSV.getInstancia().yvalues[i] + " - " + ManipularCSV.getInstancia().xvalues[i]);
-                this.esperarXsegundos(3);
             }
         }
         if (pantallaPrincipal.getInstancia().rbutton_descendente.isSelected() == true & pantallaPrincipal.getInstancia().rbutton_algoritmo.isSelected() == true) {
@@ -120,13 +128,14 @@ HiloGrafica hiloGrafica = new HiloGrafica();
                         ManipularCSV.getInstancia().xvalues[j] = ManipularCSV.getInstancia().xvalues[j + 1];
                         ManipularCSV.getInstancia().yvalues[j + 1] = temporal;
                         ManipularCSV.getInstancia().xvalues[j + 1] = temporalX;
+                        esperarXsegundos(1);
+                        Grafica.getInstancia().graficar(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, ManipularCSV.getInstancia().contador, ManipularCSV.getInstancia().tituloEjeX, ManipularCSV.getInstancia().tituloEjeY, pantallaPrincipal.getInstancia().txt_generar.getText());
 
                     }
                 }
             }
             for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
                 System.out.println(ManipularCSV.getInstancia().yvalues[i] + " - " + ManipularCSV.getInstancia().xvalues[i]);
-                this.esperarXsegundos(3);
             }
         }
         
