@@ -117,46 +117,40 @@ public class HiloContador extends Thread {
                     }
                 }
             }
-            for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
-                System.out.println(ManipularCSV.getInstancia().yvalues[i] + " - " + ManipularCSV.getInstancia().xvalues[i]);
-            }
+            HIloTiempo hIloTiempo = new HIloTiempo();
+            hIloTiempo.setPausar(true);
         }
         if (pantallaPrincipal.getInstancia().rbutton_descendente.isSelected() == true & pantallaPrincipal.getInstancia().rbutton_algoritmo.isSelected() == true) {
             cantidadMovimientosGrafica = 0;
             for (int i = 1; i < ManipularCSV.getInstancia().contador; i++) {
                 for (int j = 0; j < ManipularCSV.getInstancia().contador - 1; j++) {
-                    if (ManipularCSV.getInstancia().yvalues[j] < ManipularCSV.getInstancia().yvalues[j + 1]) {
-                        int temporal = ManipularCSV.getInstancia().yvalues[j];
-                        String temporalX = ManipularCSV.getInstancia().xvalues[j];
-                        ManipularCSV.getInstancia().yvalues[j] = ManipularCSV.getInstancia().yvalues[j + 1];
-                        ManipularCSV.getInstancia().xvalues[j] = ManipularCSV.getInstancia().xvalues[j + 1];
-                        ManipularCSV.getInstancia().yvalues[j + 1] = temporal;
-                        ManipularCSV.getInstancia().xvalues[j + 1] = temporalX;
+                    if (ManipularCSV.getInstancia().yvalues_contador[j] < ManipularCSV.getInstancia().yvalues_contador[j + 1]) {
+                        int temporal = ManipularCSV.getInstancia().yvalues_contador[j];
+                        String temporalX = ManipularCSV.getInstancia().xvalues_contador[j];
+                        ManipularCSV.getInstancia().yvalues_contador[j] = ManipularCSV.getInstancia().yvalues_contador[j + 1];
+                        ManipularCSV.getInstancia().xvalues_contador[j] = ManipularCSV.getInstancia().xvalues_contador[j + 1];
+                        ManipularCSV.getInstancia().yvalues_contador[j + 1] = temporal;
+                        ManipularCSV.getInstancia().xvalues_contador[j + 1] = temporalX;
                         esperarXsegundos(1);
                         cantidadMovimientosGrafica = cantidadMovimientosGrafica + 1;
                         pantallaPrincipal.getInstancia().etiqueta_pasos.setText(String.valueOf(cantidadMovimientosGrafica));
                     }
                 }
             }
-            for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
-                System.out.println(ManipularCSV.getInstancia().yvalues[i] + " - " + ManipularCSV.getInstancia().xvalues[i]);
-            }
+            HIloTiempo hIloTiempo = new HIloTiempo();
+            hIloTiempo.setPausar(true);
         }
 
         if (pantallaPrincipal.getInstancia().rbutton_algoritmo2.isSelected() == true && pantallaPrincipal.getInstancia().rbutton_ascendente.isSelected() == true) {
-            quickSortAscendente(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, 0, ManipularCSV.getInstancia().contador - 1, 0);
-            for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
-                System.out.println(ManipularCSV.getInstancia().yvalues[i] + " - " + ManipularCSV.getInstancia().xvalues[i]);
-                this.esperarXsegundos(3);
-            }
+            quickSortAscendente(ManipularCSV.getInstancia().yvalues_contador, ManipularCSV.getInstancia().xvalues_contador, 0, ManipularCSV.getInstancia().contador - 1, 0);
+            HIloTiempo hIloTiempo = new HIloTiempo();
+            hIloTiempo.setPausar(true);
         }
 
         if (pantallaPrincipal.getInstancia().rbutton_algoritmo2.isSelected() == true && pantallaPrincipal.getInstancia().rbutton_descendente.isSelected() == true) {
             quickSortDescendente(ManipularCSV.getInstancia().yvalues_contador, ManipularCSV.getInstancia().xvalues_contador, 0, ManipularCSV.getInstancia().contador - 1, 0);
-            for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
-                System.out.println(ManipularCSV.getInstancia().yvalues[i] + " - " + ManipularCSV.getInstancia().xvalues[i]);
-                this.esperarXsegundos(3);
-            }
+            HIloTiempo hIloTiempo = new HIloTiempo();
+            hIloTiempo.setPausar(true);
         }
     }
 }

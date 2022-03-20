@@ -112,9 +112,6 @@ public class Hilo extends Thread {
                     }
                 }
             }
-            for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
-                System.out.println(ManipularCSV.getInstancia().yvalues[i] + " - " + ManipularCSV.getInstancia().xvalues[i]);
-            }
         }
         if (pantallaPrincipal.getInstancia().rbutton_descendente.isSelected() == true & pantallaPrincipal.getInstancia().rbutton_algoritmo.isSelected() == true) {
             for (int i = 1; i < ManipularCSV.getInstancia().contador; i++) {
@@ -132,25 +129,14 @@ public class Hilo extends Thread {
                     }
                 }
             }
-            for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
-                System.out.println(ManipularCSV.getInstancia().yvalues[i] + " - " + ManipularCSV.getInstancia().xvalues[i]);
-            }
         }
 
         if (pantallaPrincipal.getInstancia().rbutton_algoritmo2.isSelected() == true && pantallaPrincipal.getInstancia().rbutton_ascendente.isSelected() == true) {
             quickSortAscendente(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, 0, ManipularCSV.getInstancia().contador - 1);
-            for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
-                System.out.println(ManipularCSV.getInstancia().yvalues[i] + " - " + ManipularCSV.getInstancia().xvalues[i]);
-                this.esperarXsegundos(3);
-            }
         }
 
         if (pantallaPrincipal.getInstancia().rbutton_algoritmo2.isSelected() == true && pantallaPrincipal.getInstancia().rbutton_descendente.isSelected() == true) {
             quickSortDescendente(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, 0, ManipularCSV.getInstancia().contador - 1);
-            for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
-                System.out.println(ManipularCSV.getInstancia().yvalues[i] + " - " + ManipularCSV.getInstancia().xvalues[i]);
-                this.esperarXsegundos(3);
-            }
         }
     }
 }

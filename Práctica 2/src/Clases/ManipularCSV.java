@@ -73,10 +73,6 @@ public class ManipularCSV {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-//        System.out.println("Datos X");
-//        escribirDatosX();
-//        System.out.println("Datos Y");
-//        escribirDatosY();
     }
 
     public void leerCSVFile(File archivo) {
@@ -88,18 +84,26 @@ public class ManipularCSV {
                 for (int i = 0; i < partesTexto.length; i++) {
                     if (i == 1) {
                         contadorY += 1;
+                        if (contadorY == 0) {
+                            tituloEjeY = partesTexto[1];
+                        }
                         if (contadorY > 0) {
-                            yvalues[contadorY - 1] = Integer.parseInt(partesTexto[i]);
-                            yvalues_contador[contadorY - 1] = Integer.parseInt(partesTexto[i]);
-                            yvalues_contador_sin_ordenar[contadorY - 1] = Integer.parseInt(partesTexto[i]);
+                            contadorY2 += 1;
+                            yvalues[contadorY2] = Integer.parseInt(partesTexto[i]);
+                            yvalues_contador[contadorY2] = Integer.parseInt(partesTexto[i]);
+                            yvalues_contador_sin_ordenar[contadorY2] = Integer.parseInt(partesTexto[i]);
                         }
                     }
                     if (i == 0) {
                         contadorX += 1;
+                        if (contadorX == 0) {
+                            tituloEjeX = partesTexto[0];
+                        }
                         if (contadorX > 0) {
-                            xvalues[contadorX - 1] = partesTexto[i];
-                            xvalues_contador[contadorX - 1] = partesTexto[i];
-                            xvalues_sin_ordenar[contadorX - 1] = partesTexto[i];
+                            contadorX2 += 1;
+                            xvalues[contadorX2] = partesTexto[i];
+                            xvalues_contador[contadorX2] = partesTexto[i];
+                            xvalues_sin_ordenar[contadorX2] = partesTexto[i];
                         }
                     }
                 }
@@ -110,26 +114,6 @@ public class ManipularCSV {
             saltosTexto = null;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
-        }
-//        System.out.println("Datos X");
-//        escribirDatosX();
-//        System.out.println("Datos Y");
-//        escribirDatosY();
-    }
-
-    public void escribirDatosX() {
-        for (int i = 0; i < contador; i++) {
-            if (yvalues[i] != null) {
-                System.out.println(xvalues[i]);
-            }
-        }
-    }
-
-    public void escribirDatosY() {
-        for (int i = 0; i < contador; i++) {
-            if (yvalues[i] != null) {
-                System.out.println(yvalues[i]);
-            }
         }
     }
 }
