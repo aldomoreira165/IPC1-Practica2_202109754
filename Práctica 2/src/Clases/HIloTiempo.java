@@ -2,16 +2,16 @@ package Clases;
 
 import java.util.Observable;
 
-public class Cronometro extends Observable implements Runnable {
+public class HIloTiempo extends Observable implements Runnable {
 
 Thread hilo;
 public static boolean pausar=false;
 private int horas, minutos, segundos;
 
-    public Cronometro() {
+    public HIloTiempo() {
     }
 
-    public Cronometro(int horas, int minutos, int segundos) {
+    public HIloTiempo(int horas, int minutos, int segundos) {
         this.horas = horas;
         this.minutos = minutos;
         this.segundos = segundos;

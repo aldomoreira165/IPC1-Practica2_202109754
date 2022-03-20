@@ -2,13 +2,11 @@ package Clases;
 
 import Clases.ManipularCSV;
 import Clases.Grafica;
-import Clases.Cronometro;
+import Clases.HIloTiempo;
 import JFrames.pantallaPrincipal;
 import javax.swing.JRadioButton;
 
 public class Hilo extends Thread {
-
-    public int cantidadMovimientosGrafica = 0;
 
     private void esperarXsegundos(int segundos) {
         try {
@@ -17,7 +15,7 @@ public class Hilo extends Thread {
             Thread.currentThread().interrupt();
         }
     }
-    
+
     public void quickSortAscendente(Integer datos[], String datosX[], int a, int b) {
         int pivote = datos[a];
         String pivoteX = datosX[a];
@@ -55,7 +53,7 @@ public class Hilo extends Thread {
         if (j + 1 < b) {
             quickSortAscendente(datos, datosX, j + 1, b);
         }
-        
+
     }
 
     public void quickSortDescendente(Integer datos[], String datosX[], int a, int b) {
@@ -96,7 +94,7 @@ public class Hilo extends Thread {
             quickSortDescendente(datos, datosX, j + 1, b);
         }
     }
-    
+
     @Override
     public void run() {
         if (pantallaPrincipal.getInstancia().rbutton_ascendente.isSelected() == true & pantallaPrincipal.getInstancia().rbutton_algoritmo.isSelected() == true) {
@@ -138,7 +136,7 @@ public class Hilo extends Thread {
                 System.out.println(ManipularCSV.getInstancia().yvalues[i] + " - " + ManipularCSV.getInstancia().xvalues[i]);
             }
         }
-        
+
         if (pantallaPrincipal.getInstancia().rbutton_algoritmo2.isSelected() == true && pantallaPrincipal.getInstancia().rbutton_ascendente.isSelected() == true) {
             quickSortAscendente(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, 0, ManipularCSV.getInstancia().contador - 1);
             for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
