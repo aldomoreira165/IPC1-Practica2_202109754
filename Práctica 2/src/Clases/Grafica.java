@@ -39,9 +39,9 @@ public class Grafica {
         );
         ChartPanel panel = new ChartPanel(grafico);
         panel.setMouseWheelEnabled(true);
-        panel.setPreferredSize(new Dimension(pantallaPrincipal.getInstancia().panel1.getWidth(), pantallaPrincipal.getInstancia().panel1.getHeight()));
-        pantallaPrincipal.getInstancia().panel1.setLayout(new BorderLayout());
-        pantallaPrincipal.getInstancia().panel1.add(panel, BorderLayout.NORTH);
+        panel.setPreferredSize(new Dimension(pantallaPrincipal.getInstancia().panel3.getWidth(), pantallaPrincipal.getInstancia().panel3.getHeight()));
+        pantallaPrincipal.getInstancia().panel3.setLayout(new BorderLayout());
+        pantallaPrincipal.getInstancia().panel3.add(panel, BorderLayout.NORTH);
         pantallaPrincipal.getInstancia().pack();
         pantallaPrincipal.getInstancia().repaint();
     }
