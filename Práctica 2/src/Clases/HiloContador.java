@@ -152,6 +152,5 @@ public class HiloContador extends Thread {
             HIloTiempo hIloTiempo = new HIloTiempo();
             hIloTiempo.setPausar(true);
         }
-Grafica.getInstancia().graficar(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, ManipularCSV.getInstancia().contador, ManipularCSV.getInstancia().tituloEjeX, ManipularCSV.getInstancia().tituloEjeY, pantallaPrincipal.getInstancia().txt_generar.getText());
     }
 }

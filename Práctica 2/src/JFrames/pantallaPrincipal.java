@@ -324,9 +324,10 @@ private static pantallaPrincipal instancia;
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel2Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_generar, javax.swing.GroupLayout.DEFAULT_SIZE, 985, Short.MAX_VALUE)
-                    .addComponent(txt_examinar)))
+                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_examinar, javax.swing.GroupLayout.DEFAULT_SIZE, 981, Short.MAX_VALUE)
+                    .addComponent(txt_generar))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panel2Layout.setVerticalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,11 +343,11 @@ private static pantallaPrincipal instancia;
         panel3.setLayout(panel3Layout);
         panel3Layout.setHorizontalGroup(
             panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 974, Short.MAX_VALUE)
         );
         panel3Layout.setVerticalGroup(
             panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 540, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout PANELFONDOLayout = new javax.swing.GroupLayout(PANELFONDO);
@@ -356,9 +357,10 @@ private static pantallaPrincipal instancia;
             .addGroup(PANELFONDOLayout.createSequentialGroup()
                 .addGroup(PANELFONDOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(PANELFONDOLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(panel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PANELFONDOLayout.createSequentialGroup()
+                        .addContainerGap(20, Short.MAX_VALUE)
+                        .addComponent(panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -367,8 +369,8 @@ private static pantallaPrincipal instancia;
             .addGroup(PANELFONDOLayout.createSequentialGroup()
                 .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -380,246 +382,11 @@ private static pantallaPrincipal instancia;
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PANELFONDO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PANELFONDO, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFileChooser seleccionarArchivo = new JFileChooser();
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivo csv", "csv");
-        seleccionarArchivo.setFileFilter(filtro);
-        int seleccionar = seleccionarArchivo.showOpenDialog(this);
-        if (seleccionar == JFileChooser.APPROVE_OPTION) {
-            File archivo = seleccionarArchivo.getSelectedFile();
-            ManipularCSV.getInstancia().leerCSVFile(archivo);
-            Grafica.getInstancia().graficar(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, ManipularCSV.getInstancia().contador, ManipularCSV.getInstancia().tituloEjeX, ManipularCSV.getInstancia().tituloEjeY, pantallaPrincipal.getInstancia().txt_generar.getText());
-            JOptionPane.showMessageDialog(null, "Datos obtenidos ", "Datos obtenidos con éxito", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Grafica.getInstancia().graficar(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, ManipularCSV.getInstancia().contador, ManipularCSV.getInstancia().tituloEjeX, ManipularCSV.getInstancia().tituloEjeY, pantallaPrincipal.getInstancia().txt_generar.getText());
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void rbutton_algoritmo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbutton_algoritmo2ActionPerformed
-        rbutton_algoritmo.setSelected(false);
-        rbutton_algoritmo2.setSelected(true);
-    }//GEN-LAST:event_rbutton_algoritmo2ActionPerformed
-
-    private void btn_ordenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ordenarActionPerformed
-        HIloTiempo cronometro = new HIloTiempo(00, 00, 00);
-        cronometro.setPausar(false);
-        cronometro.addObserver(this);
-        Thread t = new Thread(cronometro);
-        Hilo hilo = new Hilo();
-        HiloContador hiloContador = new HiloContador();
-        t.start();
-        hilo.start();
-        hiloContador.start();
-    }//GEN-LAST:event_btn_ordenarActionPerformed
-
-    private void rbutton_ascendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbutton_ascendenteActionPerformed
-        rbutton_descendente.setSelected(false);
-    }//GEN-LAST:event_rbutton_ascendenteActionPerformed
-
-    private void rbutton_descendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbutton_descendenteActionPerformed
-        rbutton_ascendente.setSelected(false);
-    }//GEN-LAST:event_rbutton_descendenteActionPerformed
-
-    private void rbutton_algoritmoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbutton_algoritmoActionPerformed
-        rbutton_algoritmo2.setSelected(false);
-        rbutton_algoritmo.setSelected(true);
-    }//GEN-LAST:event_rbutton_algoritmoActionPerformed
-
-    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        jButton1.setBackground(Color.WHITE);
-        jButton1.setForeground(Color.BLUE);
-        jButton2.setBackground(Color.BLUE);
-        jButton2.setForeground(Color.WHITE);
-        btn_ordenar.setBackground(Color.BLUE);
-        btn_ordenar.setForeground(Color.WHITE);
-        btn_obtener.setBackground(Color.BLUE);
-        btn_obtener.setForeground(Color.WHITE);
-        btn_reporte.setBackground(Color.BLUE);
-        btn_reporte.setForeground(Color.WHITE);
-        btn_limpiar.setBackground(Color.BLUE);
-        btn_limpiar.setForeground(Color.WHITE);
-    }//GEN-LAST:event_jButton1MouseEntered
-
-    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
-        jButton1.setBackground(Color.BLUE);
-        jButton1.setForeground(Color.WHITE);
-        jButton2.setBackground(Color.WHITE);
-        jButton2.setForeground(Color.BLUE);
-        btn_ordenar.setBackground(Color.BLUE);
-        btn_ordenar.setForeground(Color.WHITE);
-        btn_obtener.setBackground(Color.BLUE);
-        btn_obtener.setForeground(Color.WHITE);
-        btn_reporte.setBackground(Color.BLUE);
-        btn_reporte.setForeground(Color.WHITE);
-        btn_limpiar.setBackground(Color.BLUE);
-        btn_limpiar.setForeground(Color.WHITE);
-    }//GEN-LAST:event_jButton2MouseEntered
-
-    private void btn_ordenarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ordenarMouseEntered
-        jButton1.setBackground(Color.BLUE);
-        jButton1.setForeground(Color.WHITE);
-        jButton2.setBackground(Color.BLUE);
-        jButton2.setForeground(Color.WHITE);
-        btn_ordenar.setBackground(Color.WHITE);
-        btn_ordenar.setForeground(Color.BLUE);
-        btn_obtener.setBackground(Color.BLUE);
-        btn_obtener.setForeground(Color.WHITE);
-        btn_reporte.setBackground(Color.BLUE);
-        btn_reporte.setForeground(Color.WHITE);
-        btn_limpiar.setBackground(Color.BLUE);
-        btn_limpiar.setForeground(Color.WHITE);
-    }//GEN-LAST:event_btn_ordenarMouseEntered
-
-    private void btn_obtenerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_obtenerMouseEntered
-        jButton1.setBackground(Color.BLUE);
-        jButton1.setForeground(Color.WHITE);
-        jButton2.setBackground(Color.BLUE);
-        jButton2.setForeground(Color.WHITE);
-        btn_ordenar.setBackground(Color.BLUE);
-        btn_ordenar.setForeground(Color.WHITE);
-        btn_obtener.setBackground(Color.WHITE);
-        btn_obtener.setForeground(Color.BLUE);
-        btn_reporte.setBackground(Color.BLUE);
-        btn_reporte.setForeground(Color.WHITE);
-        btn_limpiar.setBackground(Color.BLUE);
-        btn_limpiar.setForeground(Color.WHITE);
-    }//GEN-LAST:event_btn_obtenerMouseEntered
-
-    private void btn_obtenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_obtenerActionPerformed
-        if (ManipularCSV.getInstancia().xvalues[0] == null & ManipularCSV.getInstancia().yvalues[0] == null) {
-            ManipularCSV.getInstancia().leerCSVString(pantallaPrincipal.getInstancia().obtenerRuta());
-            Grafica.getInstancia().graficar(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, ManipularCSV.getInstancia().contador, ManipularCSV.getInstancia().tituloEjeX, ManipularCSV.getInstancia().tituloEjeY, pantallaPrincipal.getInstancia().txt_generar.getText());
-            JOptionPane.showMessageDialog(null, "Datos obtenidos ", "Datos obtenidos con éxito", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_btn_obtenerActionPerformed
-
-    private void btn_reporteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_reporteMouseEntered
-        jButton1.setBackground(Color.BLUE);
-        jButton1.setForeground(Color.WHITE);
-        jButton2.setBackground(Color.BLUE);
-        jButton2.setForeground(Color.WHITE);
-        btn_ordenar.setBackground(Color.BLUE);
-        btn_ordenar.setForeground(Color.WHITE);
-        btn_obtener.setBackground(Color.BLUE);
-        btn_obtener.setForeground(Color.WHITE);
-        btn_reporte.setBackground(Color.WHITE);
-        btn_reporte.setForeground(Color.BLUE);
-        btn_limpiar.setBackground(Color.BLUE);
-        btn_limpiar.setForeground(Color.WHITE);
-    }//GEN-LAST:event_btn_reporteMouseEntered
-
-    private void btn_reporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reporteActionPerformed
-       String reporte = "<!DOCTYPE html>\n"
-                + "<html lang=\"en\">\n"
-                + "<head>\n"
-                + "    <meta charset=\"UTF-8\">\n"
-                + "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n"
-                + "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
-                + "    <title>Reporte de existencialibros</title>\n"
-                + " <style>\n"
-                + "        h1, h2{\n"
-                + "        color: white;\n"
-                + "        text-align: center;\n"
-                + "        padding: 5px;\n"
-                + "        margin: 5px;\n"
-                + "    }\n"
-                + "    body{\n"
-                + "        background-color: #242a63;\n"
-                + "        font-family: Arial;\n"
-                + "    }\n"
-                + "    \n"
-                + "    #main-container{\n"
-                + "        margin: 80px auto;\n"
-                + "        width: 600px;\n"
-                + "    }\n"
-                + "    \n"
-                + "    table{\n"
-                + "        background-color: white;\n"
-                + "        text-align: left;\n"
-                + "        border-collapse: collapse;\n"
-                + "        width: 100%;\n"
-                + "    }\n"
-                + "    \n"
-                + "    th, td{\n"
-                + "        padding: 20px;\n"
-                + "    }\n"
-                + "    \n"
-                + "    thead{\n"
-                + "        background-color: #246355;\n"
-                + "        border-bottom: solid 5px #0F362D;\n"
-                + "        color: white;\n"
-                + "    }\n"
-                + "    \n"
-                + "    tr:nth-child(even){\n"
-                + "        background-color: #ddd;\n"
-                + "    }\n"
-                + "    \n"
-                + "    tr:hover td{\n"
-                + "        background-color: #369681;\n"
-                + "        color: white;\n"
-                + "    }\n"
-                + "    </style>"
-                + "</head>\n"
-                + "<body>\n"
-                + "<h1>REPORTE DE DATOS CSV</h1\n>"
-                + "<h2>Nombre estudiante: Aldo Saúl Vásquez Moreira</h2\n>"
-                + "<h2>Carnet: 202109754</h2\n>";
-        if (rbutton_algoritmo.isSelected() == true) {
-            reporte += "<h2>Algoritmo utilizado: BubbleSort</h2>";
-        };
-        if (rbutton_algoritmo2.isSelected() == true) {
-            reporte += "<h2>Algoritmo utilizado: QuickSort</h2>";
-        };
-        reporte += "<h2> Tiempo trascurrido:" + lbl_tiempo.getText() + "</h2\n>"
-                + "<h2> Cantidad de pasos:" + etiqueta_pasos.getText() + "</h2\n>"
-                + "    <div id=\"main-container\">\n"
-                + "        <table>\n"
-                + "            <tr>\n"
-                + "                <th>" + ManipularCSV.getInstancia().tituloEjeX + "</th>\n"
-                + "                <th>" + ManipularCSV.getInstancia().tituloEjeY + "</th>\n"
-                + "            </tr>\n";
-        reporte += "<h1>Datos no Ordenados</h1>";
-        for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
-            reporte += "<tr>";
-            reporte += "<td>" + ManipularCSV.getInstancia().xvalues_sin_ordenar[i] + "</td>";
-            reporte += "<td>" + ManipularCSV.getInstancia().yvalues_contador_sin_ordenar[i] + "</td>";
-            reporte += "</tr>";
-        }
-        reporte += "        </table>\n"
-                + "        <table>\n"
-                + "            <tr>\n"
-                + "                <th>" + ManipularCSV.getInstancia().tituloEjeX + "</th>\n"
-                + "                <th>" + ManipularCSV.getInstancia().tituloEjeY + "</th>\n"
-                + "            </tr>\n";
-        reporte += "<h1>Datos Ordenados</h1>";
-        for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
-            reporte += "<tr>";
-            reporte += "<td>" + ManipularCSV.getInstancia().xvalues[i] + "</td>";
-            reporte += "<td>" + ManipularCSV.getInstancia().yvalues[i] + "</td>";
-            reporte += "</tr>";
-        }
-        reporte += "        </table>\n"
-                + "    </div>\n"
-                + "</body>\n"
-                + "</html>";
-        String nombreGrafica=txt_generar.getText();
-        File reportePrestamosUsuarios = new File(nombreGrafica+".html");
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(reportePrestamosUsuarios));
-            bw.write(reporte);
-            bw.close();
-            JOptionPane.showMessageDialog(null, "Reporte generado correctamente", "Reporte ", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_btn_reporteActionPerformed
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
         for (int i = 0; i < 50; i++) {
@@ -659,6 +426,241 @@ private static pantallaPrincipal instancia;
         btn_limpiar.setBackground(Color.WHITE);
         btn_limpiar.setForeground(Color.BLUE);
     }//GEN-LAST:event_btn_limpiarMouseEntered
+
+    private void btn_reporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reporteActionPerformed
+        String reporte = "<!DOCTYPE html>\n"
+        + "<html lang=\"en\">\n"
+        + "<head>\n"
+        + "    <meta charset=\"UTF-8\">\n"
+        + "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n"
+        + "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+        + "    <title>Reporte de existencialibros</title>\n"
+        + " <style>\n"
+        + "        h1, h2{\n"
+        + "        color: white;\n"
+        + "        text-align: center;\n"
+        + "        padding: 5px;\n"
+        + "        margin: 5px;\n"
+        + "    }\n"
+        + "    body{\n"
+        + "        background-color: #242a63;\n"
+        + "        font-family: Arial;\n"
+        + "    }\n"
+        + "    \n"
+        + "    #main-container{\n"
+        + "        margin: 80px auto;\n"
+        + "        width: 600px;\n"
+        + "    }\n"
+        + "    \n"
+        + "    table{\n"
+        + "        background-color: white;\n"
+        + "        text-align: left;\n"
+        + "        border-collapse: collapse;\n"
+        + "        width: 100%;\n"
+        + "    }\n"
+        + "    \n"
+        + "    th, td{\n"
+        + "        padding: 20px;\n"
+        + "    }\n"
+        + "    \n"
+        + "    thead{\n"
+        + "        background-color: #246355;\n"
+        + "        border-bottom: solid 5px #0F362D;\n"
+        + "        color: white;\n"
+        + "    }\n"
+        + "    \n"
+        + "    tr:nth-child(even){\n"
+        + "        background-color: #ddd;\n"
+        + "    }\n"
+        + "    \n"
+        + "    tr:hover td{\n"
+        + "        background-color: #369681;\n"
+        + "        color: white;\n"
+        + "    }\n"
+        + "    </style>"
+        + "</head>\n"
+        + "<body>\n"
+        + "<h1>REPORTE DE DATOS CSV</h1\n>"
+        + "<h2>Nombre estudiante: Aldo Saúl Vásquez Moreira</h2\n>"
+        + "<h2>Carnet: 202109754</h2\n>";
+        if (rbutton_algoritmo.isSelected() == true) {
+            reporte += "<h2>Algoritmo utilizado: BubbleSort</h2>";
+        };
+        if (rbutton_algoritmo2.isSelected() == true) {
+            reporte += "<h2>Algoritmo utilizado: QuickSort</h2>";
+        };
+        reporte += "<h2> Tiempo trascurrido:" + lbl_tiempo.getText() + "</h2\n>"
+        + "<h2> Cantidad de pasos:" + etiqueta_pasos.getText() + "</h2\n>"
+        + "    <div id=\"main-container\">\n"
+        + "        <table>\n"
+        + "            <tr>\n"
+        + "                <th>" + ManipularCSV.getInstancia().tituloEjeX + "</th>\n"
+        + "                <th>" + ManipularCSV.getInstancia().tituloEjeY + "</th>\n"
+        + "            </tr>\n";
+        reporte += "<h1>Datos no Ordenados</h1>";
+        for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
+            reporte += "<tr>";
+            reporte += "<td>" + ManipularCSV.getInstancia().xvalues_sin_ordenar[i] + "</td>";
+            reporte += "<td>" + ManipularCSV.getInstancia().yvalues_contador_sin_ordenar[i] + "</td>";
+            reporte += "</tr>";
+        }
+        reporte += "        </table>\n"
+        + "        <table>\n"
+        + "            <tr>\n"
+        + "                <th>" + ManipularCSV.getInstancia().tituloEjeX + "</th>\n"
+        + "                <th>" + ManipularCSV.getInstancia().tituloEjeY + "</th>\n"
+        + "            </tr>\n";
+        reporte += "<h1>Datos Ordenados</h1>";
+        for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
+            reporte += "<tr>";
+            reporte += "<td>" + ManipularCSV.getInstancia().xvalues[i] + "</td>";
+            reporte += "<td>" + ManipularCSV.getInstancia().yvalues[i] + "</td>";
+            reporte += "</tr>";
+        }
+        reporte += "        </table>\n"
+        + "    </div>\n"
+        + "</body>\n"
+        + "</html>";
+        String nombreGrafica=txt_generar.getText();
+        File reportePrestamosUsuarios = new File(nombreGrafica+".html");
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(reportePrestamosUsuarios));
+            bw.write(reporte);
+            bw.close();
+            JOptionPane.showMessageDialog(null, "Reporte generado correctamente", "Reporte ", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btn_reporteActionPerformed
+
+    private void btn_reporteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_reporteMouseEntered
+        jButton1.setBackground(Color.BLUE);
+        jButton1.setForeground(Color.WHITE);
+        jButton2.setBackground(Color.BLUE);
+        jButton2.setForeground(Color.WHITE);
+        btn_ordenar.setBackground(Color.BLUE);
+        btn_ordenar.setForeground(Color.WHITE);
+        btn_obtener.setBackground(Color.BLUE);
+        btn_obtener.setForeground(Color.WHITE);
+        btn_reporte.setBackground(Color.WHITE);
+        btn_reporte.setForeground(Color.BLUE);
+        btn_limpiar.setBackground(Color.BLUE);
+        btn_limpiar.setForeground(Color.WHITE);
+    }//GEN-LAST:event_btn_reporteMouseEntered
+
+    private void btn_ordenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ordenarActionPerformed
+        HIloTiempo cronometro = new HIloTiempo(00, 00, 00);
+        cronometro.setPausar(false);
+        cronometro.addObserver(this);
+        Thread t = new Thread(cronometro);
+        Hilo hilo = new Hilo();
+        HiloContador hiloContador = new HiloContador();
+        t.start();
+        hilo.start();
+        hiloContador.start();
+    }//GEN-LAST:event_btn_ordenarActionPerformed
+
+    private void btn_ordenarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ordenarMouseEntered
+        jButton1.setBackground(Color.BLUE);
+        jButton1.setForeground(Color.WHITE);
+        jButton2.setBackground(Color.BLUE);
+        jButton2.setForeground(Color.WHITE);
+        btn_ordenar.setBackground(Color.WHITE);
+        btn_ordenar.setForeground(Color.BLUE);
+        btn_obtener.setBackground(Color.BLUE);
+        btn_obtener.setForeground(Color.WHITE);
+        btn_reporte.setBackground(Color.BLUE);
+        btn_reporte.setForeground(Color.WHITE);
+        btn_limpiar.setBackground(Color.BLUE);
+        btn_limpiar.setForeground(Color.WHITE);
+    }//GEN-LAST:event_btn_ordenarMouseEntered
+
+    private void rbutton_algoritmo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbutton_algoritmo2ActionPerformed
+        rbutton_algoritmo.setSelected(false);
+        rbutton_algoritmo2.setSelected(true);
+    }//GEN-LAST:event_rbutton_algoritmo2ActionPerformed
+
+    private void rbutton_algoritmoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbutton_algoritmoActionPerformed
+        rbutton_algoritmo2.setSelected(false);
+        rbutton_algoritmo.setSelected(true);
+    }//GEN-LAST:event_rbutton_algoritmoActionPerformed
+
+    private void rbutton_descendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbutton_descendenteActionPerformed
+        rbutton_ascendente.setSelected(false);
+    }//GEN-LAST:event_rbutton_descendenteActionPerformed
+
+    private void rbutton_ascendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbutton_ascendenteActionPerformed
+        rbutton_descendente.setSelected(false);
+    }//GEN-LAST:event_rbutton_ascendenteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JFileChooser seleccionarArchivo = new JFileChooser();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivo csv", "csv");
+        seleccionarArchivo.setFileFilter(filtro);
+        int seleccionar = seleccionarArchivo.showOpenDialog(this);
+        if (seleccionar == JFileChooser.APPROVE_OPTION) {
+            File archivo = seleccionarArchivo.getSelectedFile();
+            ManipularCSV.getInstancia().leerCSVFile(archivo);
+            Grafica.getInstancia().graficar(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, ManipularCSV.getInstancia().contador, ManipularCSV.getInstancia().tituloEjeX, ManipularCSV.getInstancia().tituloEjeY, pantallaPrincipal.getInstancia().txt_generar.getText());
+            JOptionPane.showMessageDialog(null, "Datos obtenidos ", "Datos obtenidos con éxito", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        jButton1.setBackground(Color.WHITE);
+        jButton1.setForeground(Color.BLUE);
+        jButton2.setBackground(Color.BLUE);
+        jButton2.setForeground(Color.WHITE);
+        btn_ordenar.setBackground(Color.BLUE);
+        btn_ordenar.setForeground(Color.WHITE);
+        btn_obtener.setBackground(Color.BLUE);
+        btn_obtener.setForeground(Color.WHITE);
+        btn_reporte.setBackground(Color.BLUE);
+        btn_reporte.setForeground(Color.WHITE);
+        btn_limpiar.setBackground(Color.BLUE);
+        btn_limpiar.setForeground(Color.WHITE);
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void btn_obtenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_obtenerActionPerformed
+        if (ManipularCSV.getInstancia().xvalues[0] == null & ManipularCSV.getInstancia().yvalues[0] == null) {
+            ManipularCSV.getInstancia().leerCSVString(pantallaPrincipal.getInstancia().obtenerRuta());
+            Grafica.getInstancia().graficar(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, ManipularCSV.getInstancia().contador, ManipularCSV.getInstancia().tituloEjeX, ManipularCSV.getInstancia().tituloEjeY, pantallaPrincipal.getInstancia().txt_generar.getText());
+            JOptionPane.showMessageDialog(null, "Datos obtenidos ", "Datos obtenidos con éxito", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_obtenerActionPerformed
+
+    private void btn_obtenerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_obtenerMouseEntered
+        jButton1.setBackground(Color.BLUE);
+        jButton1.setForeground(Color.WHITE);
+        jButton2.setBackground(Color.BLUE);
+        jButton2.setForeground(Color.WHITE);
+        btn_ordenar.setBackground(Color.BLUE);
+        btn_ordenar.setForeground(Color.WHITE);
+        btn_obtener.setBackground(Color.WHITE);
+        btn_obtener.setForeground(Color.BLUE);
+        btn_reporte.setBackground(Color.BLUE);
+        btn_reporte.setForeground(Color.WHITE);
+        btn_limpiar.setBackground(Color.BLUE);
+        btn_limpiar.setForeground(Color.WHITE);
+    }//GEN-LAST:event_btn_obtenerMouseEntered
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Grafica.getInstancia().graficar(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, ManipularCSV.getInstancia().contador, ManipularCSV.getInstancia().tituloEjeX, ManipularCSV.getInstancia().tituloEjeY, pantallaPrincipal.getInstancia().txt_generar.getText());
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
+        jButton1.setBackground(Color.BLUE);
+        jButton1.setForeground(Color.WHITE);
+        jButton2.setBackground(Color.WHITE);
+        jButton2.setForeground(Color.BLUE);
+        btn_ordenar.setBackground(Color.BLUE);
+        btn_ordenar.setForeground(Color.WHITE);
+        btn_obtener.setBackground(Color.BLUE);
+        btn_obtener.setForeground(Color.WHITE);
+        btn_reporte.setBackground(Color.BLUE);
+        btn_reporte.setForeground(Color.WHITE);
+        btn_limpiar.setBackground(Color.BLUE);
+        btn_limpiar.setForeground(Color.WHITE);
+    }//GEN-LAST:event_jButton2MouseEntered
 
     public static void main(String args[]) {
 

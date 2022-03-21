@@ -112,10 +112,6 @@ public class Hilo extends Thread {
                     }
                 }
             }
-            Grafica.getInstancia().graficar(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, ManipularCSV.getInstancia().contador, ManipularCSV.getInstancia().tituloEjeX, ManipularCSV.getInstancia().tituloEjeY, pantallaPrincipal.getInstancia().txt_generar.getText());
-            for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
-                System.out.println(ManipularCSV.getInstancia().xvalues[i] + "-" + ManipularCSV.getInstancia().yvalues[i]);
-            }
         }
         if (pantallaPrincipal.getInstancia().rbutton_descendente.isSelected() == true & pantallaPrincipal.getInstancia().rbutton_algoritmo.isSelected() == true) {
             for (int i = 1; i < ManipularCSV.getInstancia().contador; i++) {
@@ -131,10 +127,6 @@ public class Hilo extends Thread {
                         Grafica.getInstancia().graficar(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, ManipularCSV.getInstancia().contador, ManipularCSV.getInstancia().tituloEjeX, ManipularCSV.getInstancia().tituloEjeY, pantallaPrincipal.getInstancia().txt_generar.getText());
                     }
                 }
-            }
-            Grafica.getInstancia().graficar(ManipularCSV.getInstancia().yvalues, ManipularCSV.getInstancia().xvalues, ManipularCSV.getInstancia().contador, ManipularCSV.getInstancia().tituloEjeX, ManipularCSV.getInstancia().tituloEjeY, pantallaPrincipal.getInstancia().txt_generar.getText());
-            for (int i = 0; i < ManipularCSV.getInstancia().contador; i++) {
-                System.out.println(ManipularCSV.getInstancia().xvalues[i] + "-" + ManipularCSV.getInstancia().yvalues[i]);
             }
         }
 
